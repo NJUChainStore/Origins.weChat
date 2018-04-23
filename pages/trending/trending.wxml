@@ -1,0 +1,7 @@
+<loading hidden="{{!loading}}">
+  加载中...
+</loading>
+
+<view>
+hello weChat!
+</view>
