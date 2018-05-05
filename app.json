@@ -1,6 +1,7 @@
 {
   "pages":[
-    "pages/trending/trending",
+    "pages/scanQR/scanQR",
+    "pages/history/history",
     "pages/profile/profile"
   ],
   "window":{
@@ -17,14 +18,20 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/trending/trending",
-        "text": "Trending",
+        "pagePath":"pages/scanQR/scanQR",
+        "text":"二维码",
+        "iconPath":"images/star1.png",
+        "selectedIconPath":"images/star.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "历史记录",
         "iconPath": "images/trending.png",
         "selectedIconPath": "images/trending.png"
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "Profile",
+        "text": "个人",
         "iconPath": "images/profile.png",
         "selectedIconPath": "images/profileHL.png"
       }
