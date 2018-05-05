@@ -11,7 +11,16 @@ Page({
     signUp:false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     username: "",
-    password: ""
+    password: "",
+    enum: {
+      client: '',
+      producer: ''
+    },
+    UserSignUpDto: {
+      username: "",
+      password: "",
+      role: ""
+    }
   },
   //事件处理函数
   bindViewTap: function() {
@@ -72,6 +81,31 @@ Page({
   },
   login: function(e) {
     //向后端发ajax请求 获取用户密码
+    //暂时注释 方便测试】
+    /*
+    wx.request({
+      url: 'https://URL/Login',
+      data: {"username":this.username,"password":this.password},
+      method: 'GET',
+      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        //token 如何取得登录是否成功?
+        console.log(res)
+        /*wx.showToast({
+          title: '登录成功',
+          icon: 'sucess'
+        })*/
+      /*},
+      fail: function (e) {
+        console.log(e)
+      },
+      complete: function () {
+        wx.switchTab({
+          url: '../profile/profile',
+        })
+      }
+    })*/
     /*
     if (app.globalData.password == e.detail.value) {
       wx.showToast({
@@ -86,5 +120,33 @@ Page({
   },
   signUp: function(e) {
     //向后端发ajax请求 传参username password
+    //先注释 为了测试方便
+    /*
+    wx.request({
+      url: 'https://URL/SignUp',
+      data: JSON.stringify(new UserSignUpDto(username, password, role)),
+      method: 'POST',
+      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        //token 如何获取是否注册成功？
+        console.log(res)
+        wx.showToast({
+          title: '注册成功',
+          icon: 'sucess'
+        })
+      },
+      fail: function (e) {
+        console.log(e)
+      },
+      complete: function () {
+        wx.switchTab({
+          url: '../profile/profile',
+        })
+      }
+    })*/
+    wx.switchTab({
+      url: '../profile/profile',
+    })
   }
 })

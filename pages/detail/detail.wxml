@@ -1,0 +1,16 @@
+<view>
+  <view class='title'>
+    <label style='color:#fff'>商品{{productId}}数据</label>
+  </view>
+  <form class="form">
+    <view class='inputView' wx:for="{{ProductInfoQueryViewModelProductInfoQueryViewModel.productDetails}}" wx:for-index="i" wx:for-item="item">
+      <input class='inputText' placeholder='productId' value='{{productId}}'></input>
+      <view class='loginLab'>productId</view>
+      <input class='inputText' placeholder='operator' value='{{item.operator}}'></input>              <view class='loginLab'>Operator</view>
+      <textarea class='inputText' placeholder='date' value='{{item.date}}'></textarea>
+      <view class='loginLab'>date</view>
+      <textarea class='inputText' placeholder='detail' value='{{item.detail}}'></textarea>
+      <view class='loginLab'>detail</view>
+    </view>
+  </form>
+</view>

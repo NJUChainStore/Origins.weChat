@@ -1,7 +1,14 @@
 <loading hidden="{{!loading}}">
   加载中...
 </loading>
-
 <view>
-历史记录
+  <view class='title'>
+    <label>历史记录</label>
+  </view>
+
+  <view class='chainShortBar' wx:for="{{ProductShortList}}" wx:for-index="i" wx:for-item="item">
+    <label>{{item.productId}}</label>
+    <input class='attrLab' value='{{item.producedDate}}' disabled='disabled'></input>
+    <image class="detailImage" src="../../images/detail.png" bindtap='requireDetail({{item.productId}})'></image>
+  </view>
 </view>

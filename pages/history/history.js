@@ -1,6 +1,11 @@
 Page({
   data: {
-
+    ProductShortList: [
+      {
+        productId: "",
+        producedDate: ""
+      }
+    ]
   },
 
   onLoad: function (options) {
@@ -9,20 +14,28 @@ Page({
 
   onShow: function () {
     wx.request({
-      url: 'https://URL',
+      url: 'https://URL/Product/history',
       data: {},
       method: 'GET',
       // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
       success: function (res) {
-        
+        this.setData({
+          productShortList: JSON.parse(res.data)
+        })
       },
-      fail: function () {
-        
+      fail: function (e) {
+        console.log(e)
       },
       complete: function () {
-        
+        //再刷新一遍更新数据
       }
+    })
+  },
+
+  requireDetail: function (productId) {
+    wx.navigateTo({
+      url: '../detail/detail?productId'
     })
   },
 
@@ -31,16 +44,18 @@ Page({
     　　wx.showNavigationBarLoading() //在标题栏中显示加载
 
     　　wx.request({
-      url: 'https://URL',
+      url: 'https://URL/Product/history',
       data: {},
       method: 'GET',
       // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
       success: function (res) {
-        // success
+        this.setData({
+          productShortList: JSON.parse(res.data)
+        })
       },
-      fail: function () {
-        // fail
+      fail: function (e) {
+        console.log(e)
       },
       complete: function () {
         // complete

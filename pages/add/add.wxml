@@ -1,0 +1,21 @@
+<view>
+  <view class='title'>
+    <label style='color:#fff'>添加商品数据</label>
+  </view>
+  <form class="form" bindsubmit='submit' bindreset='reset'>
+
+    <view class='inputView'>
+      <input class='inputText' placeholder='productId' bindinput='productIdInput'></input>
+      <view class='loginLab'>productId</view>
+      <input class='inputText' placeholder='operator' bindinput='operatorInput'></input>
+      <view class='loginLab'>Operator</view>
+      <textarea class='inputText' placeholder='productDetails' bindinput='productDetailsInput'></textarea>
+      <view class='loginLab'>productDetails</view>
+    </view>
+
+    <view class='btnView'>
+      <button class="button" form-type="submit">提交</button>
+      <button class="button" form-type="reset">重置</button>
+    </view>
+  </form>
+</view>
