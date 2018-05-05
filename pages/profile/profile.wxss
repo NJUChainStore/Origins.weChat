@@ -58,17 +58,34 @@ page{
  background-color: #cccccc; 
  margin-top: 1px; 
 } 
-/*按钮*/
-.loginBtnView { 
- width: 100%; 
- height: auto; 
- background-color: #f2f2f2; 
- margin-top: 0px; 
- margin-bottom: 0px; 
- padding-bottom: 0px; 
-} 
   
 .loginBtn { 
- width: 100px; 
+ width: 150px; 
  margin-top: 35px; 
+ /*margin-left: 0px;*/
+ align-self: left;
+ background-color: #259986; 
+ color: #fff;
+}
+
+.signUpBtn { 
+ width: 150px; 
+ margin-top: 10px; 
+ /*margin-left: 110px;*/
+ align-self: right;
+ background-color: #259986;
+ color: #fff;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin-left: 35%;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  margin-top: 10px;
+  margin-left: 40%;
+  color: #aaa;
 }

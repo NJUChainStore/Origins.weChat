@@ -1,4 +1,7 @@
 /**index.wxss**/
+page{
+  background-color: #c3c9c8
+}
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -18,4 +21,54 @@
 
 .usermotto {
   margin-top: 200px;
+}
+.login-from { 
+ margin-top: 20px; 
+ flex: auto; 
+ height:100%; 
+} 
+.loginLab { 
+ margin: 15px 15px 15px 10px; 
+ color: #545454; 
+ font-size: 14px
+} 
+.inputText { 
+ flex: block; 
+ float: right; 
+ text-align: right; 
+ margin-right: 22px; 
+ margin-top: 11px; 
+ color: #cccccc; 
+ font-size: 14px
+} 
+.inputView { 
+ background-color: #fff; 
+ line-height: 44px; 
+} 
+
+.nameImage, .keyImage { 
+ margin-left: 22px; 
+ width: 14px; 
+ height: 14px
+} 
+.line { 
+ width: 100%; 
+ height: 1px; 
+ background-color: #cccccc; 
+ margin-top: 1px; 
+} 
+.loginBtnView { 
+ width: 100%; 
+ height: auto; 
+ background-color: #c3c9c8; 
+ margin-top: 0px; 
+ margin-bottom: 0px; 
+ padding-bottom: 0px; 
+} 
+  
+.loginBtn { 
+ width: 80%; 
+ margin-top: 35px; 
+ background-color: #259986;
+ color: white;
 }

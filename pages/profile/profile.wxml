@@ -2,14 +2,14 @@
   <view class="login-icon">
     <image class="login-img" src="../../images/login.jpg"></image>
   </view>
-  <view class=''>
-    <label bindtap='welcome' text>WELCOME</label>
-    {{username}}
+  <view>
+    <image style='display:{{userDisplay}}' class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <input style='display:{{userDisplay}}' class="userinfo-nickname" value="{{userInfo.nickName}}" disabled='disabled'></input>
+    <label style='display:{{loginDisplay}}'>Origins</label>
   </view>
   
-  <view class="login-form">
-    <view class="loginBtnView">
-    <button class="loginBtn" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" style='display:{{loginDisabled}}' bindtap="login">  登录  </button>
-    </view>
+  <view class='' style=''>
+    <button class="loginBtn" style='display:{{loginDisplay}}' bindtap="login">  登录  </button>
+    <button class="signUpBtn" style='display:{{loginDisplay}}' bindtap="signUp">  注册  </button>
   </view>
 </view>

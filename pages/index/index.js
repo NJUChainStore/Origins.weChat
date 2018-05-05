@@ -7,15 +7,24 @@ Page({
     motto: 'Hello Origins!',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    isLogin: true,
+    signUp:false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    username: "",
+    password: ""
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+    console.log(app.globalData.userInfo)
+    wx.showToast({
+      title: "" + app.globalData.userInfo,
     })
   },
-  onLoad: function () {
+  onLoad: function (e) {
+    this.setData({
+      signUp: e.signUp
+    })
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -50,5 +59,32 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  usernameInput: function(e) {
+    this.setData({
+      username: e.detail.value
+    })
+  },
+  passwordInput: function(e) {
+    this.setData({
+      password: e.detail.value
+    })
+  },
+  login: function(e) {
+    //向后端发ajax请求 获取用户密码
+    /*
+    if (app.globalData.password == e.detail.value) {
+      wx.showToast({
+        title: '登录成功！',
+      })
+    }*/
+    app.globalData.isLogin = true
+    
+    wx.switchTab({
+      url: '../profile/profile',
+    })
+  },
+  signUp: function(e) {
+    //向后端发ajax请求 传参username password
   }
 })

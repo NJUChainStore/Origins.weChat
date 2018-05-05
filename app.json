@@ -3,7 +3,9 @@
     "pages/scanQR/scanQR",
     "pages/history/history",
     "pages/profile/profile",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/index/index",
+    "pages/add/add"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -20,15 +22,9 @@
     "list": [
       {
         "pagePath":"pages/scanQR/scanQR",
-        "text":"二维码",
+        "text":"功能",
         "iconPath":"images/star1.png",
         "selectedIconPath":"images/star.png"
-      },
-      {
-        "pagePath": "pages/history/history",
-        "text": "历史记录",
-        "iconPath": "images/trending.png",
-        "selectedIconPath": "images/trending.png"
       },
       {
         "pagePath": "pages/profile/profile",

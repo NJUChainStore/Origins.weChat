@@ -1,20 +1,36 @@
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    isProducer: false,
+    producerDisplay: 'none',
+    clientDisplay: 'block' 
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+      isProducer: app.globalData.isProducer
+    })
+    if(this.isProducer == true){
+      this.setData({
+        prducerDisplay: 'block',
+        clientDisplay: 'none'
+      })
+    }else{
+      this.setData({
+        producerDisplay: 'none',
+        clientDisplay: 'block'
+      })
+    }
   },
 
-  scan: function (e){
+  scan: function (e) {
     var that = this;
     var show;  
     //调用扫码api
@@ -45,6 +61,18 @@ Page({
       },    
     })
   },
+
+  history: function () {
+    wx.navigateTo({
+      url: '../history/history',
+    })
+  },
+
+  addData: function (){
+    wx.navigateTo({
+      url: '../add/add',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -56,7 +84,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.setData({
+      isProducer:app.globalData.isProducer
+    })
   },
 
   /**

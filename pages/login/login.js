@@ -26,16 +26,13 @@ Page({
       })
     } else {
       //跳转页面
-/*
+
       wx.showToast({
         title: '登陆成功',
         icon: 'success',
         duration: 2000
       })
-*/
-      wx.navigateBack({
-        delta: 1
-      })
+      
     }
   }
 })  

@@ -4,8 +4,29 @@
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
     </block>
+  </view>
+  <view class="login-form">
+    <view class='inputView'>
+      <image class="nameImage" src="../../images/name.png"></image>
+      <label class='loginLab'>username</label>
+      <input class='inputText' placeholder='请输入用户名' bindinput='usernameInput' value='{{userInfo.nickName}}'></input>
+    </view>
+    <view class="line"></view>
+    <view class='inputView'>
+      <image class="keyImage" src="../../images/key.png"></image>
+      <label class='loginLab'>password</label>
+      <input class='inputText' placeholder='请输入密码' bindinput="passwordInput"></input>
+    </view>
+
+    <view class="loginBtnView">
+      <button wx:if="{{isLogin==true}}" class='loginBtn' bindtap='login'>登录</button>
+        <block wx:else>
+          <button class='loginBtn' bindtap='signUp'>注册</button>
+        </block>
+    </view>
+
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>

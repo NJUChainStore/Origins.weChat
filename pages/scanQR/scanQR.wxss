@@ -1,13 +1,20 @@
 page{ 
- height: 100%;
- background-color: #bfbfbf 
+  height: 100%;
+  background-color: #c3c9c8; 
 }
 
 .scanpic { 
-margin-top: 40%;
-margin-left: 30%;
+  margin-top: 30%;
+  margin-left: 38%;
 
- height: 150px; 
- width: 150px;
+  height: 100px; 
+  width: 100px;
 } 
   
+.historyPic {
+  margin-top: 20px;
+  margin-left: 38%;
+
+  height: 100px; 
+  width: 100px;
+}
