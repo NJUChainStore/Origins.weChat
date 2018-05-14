@@ -7,8 +7,8 @@
   </view>
 
   <view class='chainShortBar' wx:for="{{ProductShortList}}" wx:for-index="i" wx:for-item="item">
-    <label>{{item.productId}}</label>
-    <input class='attrLab' value='{{item.producedDate}}' disabled='disabled'></input>
-    <image class="detailImage" src="../../images/detail.png" bindtap='requireDetail({{item.productId}})'></image>
+    <label style='margin-left: 10px'>{{item.productId}}</label>
+    <input class='attrLab' value='生产日期：{{item.producedDate}}' disabled='disabled'></input>
+    <image class="detailImage" src="../../images/detail.png" bindtap='requireDetail'></image>
   </view>
 </view>

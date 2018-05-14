@@ -1,28 +1,44 @@
+const app = getApp()
 Page({
   data: {
     ProductShortList: [
       {
-        productId: "",
-        producedDate: ""
+        productId: "光明牛奶",
+        producedDate: "2018.5.13 12:21:39"
+      },
+      {
+        productId: "放心牛奶",
+        producedDate: "2018.5.12 22:44:02"
+      },
+      {
+        productId: "进口牛奶",
+        producedDate: "2018.5.13 08:55:07"
       }
     ]
   },
 
   onLoad: function (options) {
-
   },
 
   onShow: function () {
+    var that = this
     wx.request({
-      url: 'https://URL/Product/history',
-      data: {},
+      url: 'http://localhost:12494/Product/history',
       method: 'GET',
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: { 
+        //'content-type': 'application/json',
+        'Authorization': `Bearer ${app.globalData.token}`},
       success: function (res) {
-        this.setData({
-          productShortList: JSON.parse(res.data)
-        })
+        console.log(res.data)
+        if(res.data != null) {
+          that.setData({
+            productShortList: res.data
+          })
+        }else {
+          wx.showToast({
+            title: '当前没有历史查询内容',
+          })
+        }
       },
       fail: function (e) {
         console.log(e)
@@ -31,11 +47,43 @@ Page({
         //再刷新一遍更新数据
       }
     })
+    
   },
 
-  requireDetail: function (productId) {
+  requireDetail: function () {
+    var that = this
     wx.navigateTo({
-      url: '../detail/detail?productId'
+      url: `../detail/detail?productId=${that.data.productId}`
+    })
+  },
+
+  detail: function () {
+  
+  },
+  delete: function () {
+    var that = this
+    wx.request({
+      url: `http://localhost:12494/Product/history?productId=${that.data.productId}`,
+      method: 'DELETE',
+      header: {
+        //'content-type': 'application/json',
+        'Authorization': `Bearer ${app.globalData.token}`
+      },
+      success: function (res) {
+        console.log(res.data)
+        wx.showToast({
+          title: '已删除',
+        })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '删除失败',
+        })
+        console.log(e)
+      },
+      complete: function () {
+        //再刷新一遍更新数据
+      }
     })
   },
 
@@ -44,11 +92,13 @@ Page({
     　　wx.showNavigationBarLoading() //在标题栏中显示加载
 
     　　wx.request({
-      url: 'https://URL/Product/history',
+        url: 'http://localhost:12494/Product/history',
       data: {},
       method: 'GET',
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: {
+        //'content-type': 'application/json',
+        'Authorization': `Bearer ${app.globalData.token}`
+      },
       success: function (res) {
         this.setData({
           productShortList: JSON.parse(res.data)

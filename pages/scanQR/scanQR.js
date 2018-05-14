@@ -1,4 +1,6 @@
 const app = getApp()
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.js')
+var qqmapsdk
 Page({
 
   /**
@@ -6,7 +8,7 @@ Page({
    */
   data: {
     isProducer: false,
-    producerDisplay: 'none',
+    producerDisplay: 'block',
     clientDisplay: 'block',
     location: "",
     productId: "",
@@ -25,12 +27,29 @@ Page({
     this.setData({
       isProducer: app.globalData.isProducer
     })
-    if(this.isProducer == true){
+    if(this.data.isProducer == true){
+      this.setData({
+        producerDisplay: 'block',
+        clientDisplay: 'none'
+      })
+    }else{
+      this.setData({
+        producerDisplay: 'none',
+        clientDisplay: 'block'
+      })
+    }
+  },
+  onShow: function (){
+    console.log(app.globalData.isProducer)
+    this.setData({
+      isProducer: app.globalData.isProducer
+    })
+    if (this.data.isProducer == true) {
       this.setData({
         prducerDisplay: 'block',
         clientDisplay: 'none'
       })
-    }else{
+    } else {
       this.setData({
         producerDisplay: 'none',
         clientDisplay: 'block'
@@ -50,11 +69,19 @@ Page({
           show: this.show
 
         })
+
         wx.showToast({
-          title: '成功',
-          icon: 'success',
-          duration: 2000
+          title: this.show,
+          duration: 5000
         })
+        //getLocation得到地理位置信息
+        that.getLocation()
+
+        //跳转商品详情页
+        wx.navigateTo({
+          url: `../detail/detail?productId=${that.data.productId}`,
+        })
+
       },
       fail: (res) => {
         wx.showToast({
@@ -64,35 +91,20 @@ Page({
         })
       },
       complete: (res) => {
-        wx.showToast({
-          title: this.show,
-          duration: 5000
-        })
-
-        //getLocation得到地理位置信息
-        getLocation()
-
-        //ajax向后端传输
-        submit()
-
-        //跳转商品详情页
-        wx.navigateTo({
-          url: '../detail/detail?productId={{productId}}',
-        })
-
       },    
     })
   },
 
   submit: function (){
+    var that = this
     wx.request({
-      url: 'https://URL/Product/QRcode',
-      data: {"productId":productId,"location":location},
+      url: `https://URL/Product/QRcode?productId=${that.data.productId}&location=${that.data.location}`,
       method: 'GET',
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: {
+        //'content-type': 'application/json',
+        'Authorization': `Bearer ${app.globalData.token}`
+      },
       success: function (res) {
-        //token
         console.log(res)
         wx.showToast({
           title: '添加成功',
@@ -102,11 +114,12 @@ Page({
       fail: function (e) {
         console.log(e)
       },
+      /*
       complete: function () {
         wx.switchTab({
           url: '../scanQR/scanQR',
         })
-      }
+      }*/
     })
   },
 
@@ -114,7 +127,7 @@ Page({
     var that = this
     // 实例化腾讯地图API核心类
     qqmapsdk = new QQMapWX({
-      key: '开发密钥（key）' // 必填
+      key: 'HMHBZ-VF5RQ-MQX5N-GZFW4-GPJPH-S3BXJ'
     });
     //1、获取当前位置坐标
     wx.getLocation({
@@ -132,6 +145,9 @@ Page({
               location: address
             })
             console.log(address)
+
+            //ajax向后端传输
+            that.submit()
           }
         })
       }

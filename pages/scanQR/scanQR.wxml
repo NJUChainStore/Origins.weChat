@@ -1,5 +1,5 @@
 <view>
   <image class='scanpic' bindtap='scan' src="../../images/scan.png"></image>
-  <image class='historyPic' bindtap='history' display='{{clientDisplay}}' src='../../images/history.png'></image>
-  <image class='historyPic' bindtap='addData' display='{{producerDisplay}}' src='../../images/add.png'></image>
+  <image class='historyPic' bindtap='history' style='display:{{clientDisplay}};' src='../../images/history.png'></image>
+  <image class='historyPic' bindtap='addData' style='display:{{producerDisplay}};' src='../../images/add.png'></image>
 </view>

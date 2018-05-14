@@ -21,9 +21,9 @@
     </view>
 
     <view class="loginBtnView">
-      <button wx:if="{{isLogin==true}}" class='loginBtn' bindtap='login'>登录</button>
+      <button wx:if="{{signUp==1}}" class='loginBtn' bindtap='signUp'>注册</button>
         <block wx:else>
-          <button class='loginBtn' bindtap='signUp'>注册</button>
+          <button class='loginBtn' bindtap='login'>登录</button>
         </block>
     </view>
 

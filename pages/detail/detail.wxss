@@ -4,10 +4,13 @@ page{
 .title {
   margin-top: 20px;
   margin-bottom: 20px;
-  margin-left: 35%;
+  margin-left: 30%;
+  
 }
 .loginLab { 
- margin: 15px 15px 15px 10px; 
+ margin-left: 15px;
+ margin-top: 10px;
+ margin-bottom: 20px; 
  color: #545454; 
  font-size: 14px
 } 
@@ -16,8 +19,18 @@ page{
  float: right; 
  text-align: right; 
  margin-top: 10px;
- margin-bottom: 10px; 
+ /*margin-bottom: 10px;*/ 
  margin-right: 22px; 
+ color: #cccccc; 
+ font-size: 14px
+} 
+.inputText1 { 
+ flex: block; 
+ float: left; 
+ text-align: left; 
+ margin-top: 10px;
+ /*margin-bottom: 10px;*/ 
+ margin-left: 22px; 
  color: #cccccc; 
  font-size: 14px
 } 

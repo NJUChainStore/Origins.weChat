@@ -59,19 +59,25 @@ page{
   margin-top: 200px;
 }
 .chainShortBar { 
- margin-top: 20px; 
+ background-color: white;
+ margin-left: 40px;
+ margin-top: 20px;
+ margin-right: 40px;
  flex: auto; 
  height:100%; 
+ border-radius: 10px
 } 
 .attrLab { 
- margin: 15px 15px 15px 10px; 
+ /*margin: 15px 15px 15px 10px; */
+ margin-left: 10px;
  color: #545454; 
  font-size: 14px
 } 
 .inputText { 
  flex: block; 
  float: right; 
- text-align: right; 
+ text-align: right;
+ margin-left: 10px; 
  margin-right: 22px; 
  margin-top: 11px; 
  color: #cccccc; 
@@ -84,8 +90,9 @@ page{
 
 .detailImage { 
  margin-right: 22px; 
- width: 14px; 
- height: 14px
+ margin-left: 10px;
+ width: 30px; 
+ height: 30px
 } 
 .line { 
  width: 100%; 

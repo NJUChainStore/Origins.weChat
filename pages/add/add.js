@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -17,14 +18,19 @@ Page({
   },
 
   submit: function (e) {
+    var that = this
     wx.request({
-      url: 'https://URL/Product',
-      data: JSON.stringify(new StatsModel(productId, operator, productDetails)),
+      url: 'http://localhost:12494/Product',
+      data: JSON.stringify({
+        productId: that.data.productId, 
+        operator: that.data.operator, 
+        productDetails: that.data.productDetails}),
       method: 'POST',
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: {
+        'content-type': 'application/json', // 默认值 
+        'Authorization': `Bearer ${app.globalData.token}`
+      },
       success: function (res) {
-        //token
         console.log(res)
         wx.showToast({
           title: '添加成功',
@@ -60,9 +66,9 @@ Page({
     })
   },
 
-  productDetails: function (e) {
+  productDetailsInput: function (e) {
     this.setData({
-      productDetails:e.detai.value
+      productDetails:e.detail.value
     })
   },
 
@@ -84,12 +90,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    /*
     wx.request({
-      url: 'https://URL',
+      url: 'http://localhost:12494/Product',
       data: {},
       method: 'GET',
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
+      header: {
+        'content-type': 'application/json', // 默认值 
+        'token': app.globalData.token
+      },
       success: function (res) {
 
       },
@@ -99,7 +108,7 @@ Page({
       complete: function () {
 
       }
-    })
+    })*/
   },
 
   /**

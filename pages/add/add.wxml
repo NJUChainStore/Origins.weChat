@@ -8,8 +8,8 @@
       <input class='inputText' placeholder='productId' bindinput='productIdInput'></input>
       <view class='loginLab'>productId</view>
       <input class='inputText' placeholder='operator' bindinput='operatorInput'></input>
-      <view class='loginLab'>Operator</view>
-      <textarea class='inputText' placeholder='productDetails' bindinput='productDetailsInput'></textarea>
+      <view class='loginLab'>operator</view>
+      <textarea class='inputText' placeholder='productDetails(请用冒号分隔每条信息的名称和内容，并用分号隔开每一条不同的信息)' bindinput='productDetailsInput'></textarea>
       <view class='loginLab'>productDetails</view>
     </view>
 

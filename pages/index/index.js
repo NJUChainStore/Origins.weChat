@@ -8,19 +8,11 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     isLogin: true,
-    signUp:false,
+    signUp: 1,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     username: "",
-    password: "",
-    enum: {
-      client: '',
-      producer: ''
-    },
-    UserSignUpDto: {
-      username: "",
-      password: "",
-      role: ""
-    }
+    password: '123',
+
   },
   //事件处理函数
   bindViewTap: function() {
@@ -29,11 +21,18 @@ Page({
       title: "" + app.globalData.userInfo,
     })
   },
+  /*onShow: function (e) {
+    this.setData({
+      signUp: e.signUp
+    })
+  },*/
   onLoad: function (e) {
     this.setData({
       signUp: e.signUp
     })
-
+    var that = this
+    console.log("signUp " + that.data.signUp)
+  
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -78,25 +77,33 @@ Page({
     this.setData({
       password: e.detail.value
     })
+    var that = this;
+    console.log(that.data.password)
+  },
+  UserSignUpDto: function (username, password, role) {
+    this.username = username
+    this.password = passoword
+    this.role = role
   },
   login: function(e) {
-    //向后端发ajax请求 获取用户密码
-    //暂时注释 方便测试】
-    /*
+    var that = this
+  
     wx.request({
-      url: 'https://URL/Login',
-      data: {"username":this.username,"password":this.password},
+      url: `http://localhost:12494/Account/Login?username=${that.data.username}&password=${that.data.password}`,
+      header: {
+        'content-type': 'application/json', // 默认值 
+      },
       method: 'GET',
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
       success: function (res) {
-        //token 如何取得登录是否成功?
         console.log(res)
-        /*wx.showToast({
+        app.globalData.token = res.data.token
+        app.globalData.isProducer = true //
+
+        wx.showToast({
           title: '登录成功',
           icon: 'sucess'
-        })*/
-      /*},
+        })
+      },
       fail: function (e) {
         console.log(e)
       },
@@ -105,7 +112,7 @@ Page({
           url: '../profile/profile',
         })
       }
-    })*/
+    })
     /*
     if (app.globalData.password == e.detail.value) {
       wx.showToast({
@@ -119,18 +126,22 @@ Page({
     })
   },
   signUp: function(e) {
-    //向后端发ajax请求 传参username password
-    //先注释 为了测试方便
-    /*
+    var that = this
+    console.log(that.data.username + " " + that.data.password)
     wx.request({
-      url: 'https://URL/SignUp',
-      data: JSON.stringify(new UserSignUpDto(username, password, role)),
+      url: 'http://127.0.0.1:12494/Account/SignUp',
+      header: {
+        'content-type': 'application/json' // 默认值  
+      },
+      
+      data: JSON.stringify({
+        username:that.data.username, 
+        password:that.data.password,
+        role:'producer'}),
       method: 'POST',
-      // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
       success: function (res) {
-        //token 如何获取是否注册成功？
-        console.log(res)
+        console.log('token ' + res.data.token)
+        app.globalData.token = res.data.token
         wx.showToast({
           title: '注册成功',
           icon: 'sucess'
@@ -144,7 +155,7 @@ Page({
           url: '../profile/profile',
         })
       }
-    })*/
+    })
     wx.switchTab({
       url: '../profile/profile',
     })

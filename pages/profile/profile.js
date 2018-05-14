@@ -31,12 +31,12 @@ Page({
 
   login: function (e){       
     wx.navigateTo({
-        url: '../index/index?signUp=false',
+        url: '../index/index?signUp=0',
     })
   },
   signUp: function (e){
     wx.navigateTo({
-      url: '../index/index?signUp=true',
+      url: '../index/index?signUp=1',
     })
   },
 
