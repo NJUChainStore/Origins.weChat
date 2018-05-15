@@ -1,14 +1,17 @@
+<view>
 <loading hidden="{{!loading}}">
   加载中...
 </loading>
+</view>
 <view>
   <view class='title'>
     <label>历史记录</label>
   </view>
 
-  <view class='chainShortBar' wx:for="{{ProductShortList}}" wx:for-index="i" wx:for-item="item">
+  <view class='chainShortBar' wx:for="{{productShortList}}" wx:key="key" wx:for-index="i" wx:for-item="item">
     <label style='margin-left: 10px'>{{item.productId}}</label>
-    <input class='attrLab' value='生产日期：{{item.producedDate}}' disabled='disabled'></input>
-    <image class="detailImage" src="../../images/detail.png" bindtap='requireDetail'></image>
+    <!-- <input class='attrLab' value='生产日期：{{item.produceDate}}' disabled='disabled'></input> -->
+    <image class="detailImage" style='margin-left: 10px' src="../../images/detail.png" data-productId='{{item.productId}}' bindtap='requireDetail'></image>
+    <image class="detailImage" src="../../images/delete.png" data-productId='{{item.productId}}' bindtap='delete'></image>
   </view>
 </view>
