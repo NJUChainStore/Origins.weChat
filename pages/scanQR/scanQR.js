@@ -7,11 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isProducer: false,
     producerDisplay: 'block',
     clientDisplay: 'block',
     location: "",
     productId: "",
+    isProducer: false,
 
     ProductInfoItem: function (operator, date, detail) {
       this.product = productId;
@@ -27,7 +27,7 @@ Page({
     this.setData({
       isProducer: app.globalData.isProducer
     })
-    if(this.data.isProducer == true){
+    if (app.globalData.isProducer == 1){
       this.setData({
         producerDisplay: 'block',
         clientDisplay: 'none'
@@ -41,10 +41,7 @@ Page({
   },
   onShow: function (){
     console.log(app.globalData.isProducer)
-    this.setData({
-      isProducer: app.globalData.isProducer
-    })
-    if (this.data.isProducer == true) {
+    if (app.globalData.isProducer == 1) {
       this.setData({
         prducerDisplay: 'block',
         clientDisplay: 'none'
@@ -173,15 +170,6 @@ Page({
    */
   onReady: function () {
     
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    this.setData({
-      isProducer:app.globalData.isProducer
-    })
   },
 
   /**

@@ -19,6 +19,17 @@
       <label class='loginLab'>password</label>
       <input class='inputText' placeholder='请输入密码' bindinput="passwordInput"></input>
     </view>
+    <view class="line"></view>
+    <view class='inputView'>
+      <image class="keyImage" src="../../images/role.png"></image>
+      <label class='loginLab'>role</label>
+      <picker class='inputText' style='margin-top:0px' value='{{roleIndex}}' range='{{role}}' bindchange="roleInput">
+      <view>
+        <text>{{role[roleIndex]}}</text>
+        </view>
+        </picker>
+    </view>
+
 
     <view class="loginBtnView">
       <button wx:if="{{signUp==1}}" class='loginBtn' bindtap='signUp'>注册</button>

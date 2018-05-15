@@ -5,6 +5,7 @@
   <view>
     <image style='display:{{userDisplay}}' class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <input style='display:{{userDisplay}}' class="userinfo-nickname" value="{{userInfo.nickName}}" disabled='disabled'></input>
+    <button class="loginBtn" style='display:{{userDisplay}}' bindtap="logout">  登出  </button>
     <label style='display:{{loginDisplay}}'>Origins</label>
   </view>
   

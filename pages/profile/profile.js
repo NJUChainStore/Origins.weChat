@@ -11,7 +11,6 @@ Page({
   },
    
   onLoad: function (e) {
-
   },
 
   onShow: function () {
@@ -33,6 +32,14 @@ Page({
     wx.navigateTo({
         url: '../index/index?signUp=0',
     })
+  },
+  logout: function (e){
+    this.setData({
+      loginDisplay: 'block',
+      userDisplay: 'none'
+    })
+    var that = this
+    that.onLoad()
   },
   signUp: function (e){
     wx.navigateTo({

@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var loadFunc = require("../scanQR/scanQR.js")
 const app = getApp()
 
 Page({
@@ -12,6 +13,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     username: "",
     password: '123',
+    role:['Client','Producer','Admin'],
+    roleIndex: 0,
+    userRole: ''
 
   },
   //事件处理函数
@@ -80,6 +84,13 @@ Page({
     var that = this;
     console.log(that.data.password)
   },
+  roleInput: function(e) {
+    console.log('选中项为',this.data.role[e.detail.value])
+    this.setData({
+      roleIndex: e.detail.value,
+      userRole: this.data.role[e.detail.value]
+    })
+  },
   UserSignUpDto: function (username, password, role) {
     this.username = username
     this.password = passoword
@@ -97,11 +108,27 @@ Page({
       success: function (res) {
         console.log(res)
         app.globalData.token = res.data.token
-        app.globalData.isProducer = true //
+        if(res.data.role != 'Client'){
+          app.globalData.isProducer = 1 //
+        }else{
+          app.globalData.isProducer = 0 //
+        }
+
+        console.log(app.globalData.isProducer)
 
         wx.showToast({
           title: '登录成功',
           icon: 'sucess'
+        })
+
+        //调用scanQR界面onShow强制初始化
+        wx.switchTab({
+          url: '../scanQR/scanQR',
+          success: function (e) {
+            var page = getCurrentPages().pop();
+            if (page == undefined || page == null) return;
+            page.onShow();
+          }
         })
       },
       fail: function (e) {
@@ -137,7 +164,7 @@ Page({
       data: JSON.stringify({
         username:that.data.username, 
         password:that.data.password,
-        role:'Client'}),
+        role:that.data.userRole}),
       method: 'POST',
       success: function (res) {
         console.log('token ' + res.data.token)
