@@ -9,7 +9,7 @@
   </view>
 
   <view class='chainShortBar' wx:for="{{productShortList}}" wx:key="key" wx:for-index="i" wx:for-item="item">
-    <label style='margin-left: 10px'>{{item.productId}}</label>
+    <label style='margin-left: 10px'>商品名称: {{item.productId}}</label>
     <!-- <input class='attrLab' value='生产日期：{{item.produceDate}}' disabled='disabled'></input> -->
     <image class="detailImage" style='margin-left: 10px' src="../../images/detail.png" data-productId='{{item.productId}}' bindtap='requireDetail'></image>
     <image class="detailImage" src="../../images/delete.png" data-productId='{{item.productId}}' bindtap='delete'></image>

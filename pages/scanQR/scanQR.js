@@ -72,10 +72,13 @@ Page({
 
         wx.showToast({
           title: this.show,
-          duration: 5000
+          //duration: 5000
         })
         //getLocation得到地理位置信息
         that.getLocation()
+
+        //ajax向后端传输
+        //that.submit()
 
         //跳转商品详情页
         wx.navigateTo({
@@ -98,14 +101,14 @@ Page({
   submit: function (){
     var that = this
     wx.request({
-      url: `http://localhost:12494/Product/QRcode?productId=${that.data.productId}&location=${that.data.location}`,
+      url: `http://localhost:12494/Product?productId=${that.data.productId}&location=${that.data.location}`,
       method: 'GET',
       header: {
         //'content-type': 'application/json',
         'Authorization': `Bearer ${app.globalData.token}`
       },
       success: function (res) {
-        console.log(res)
+        console.log('1' + res.data)
         wx.showToast({
           title: '添加成功',
           icon: 'sucess'
@@ -147,7 +150,7 @@ Page({
             console.log(address)
 
             //ajax向后端传输
-            that.submit()
+            //that.submit()
           }
         })
       }

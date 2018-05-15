@@ -25,7 +25,7 @@ Page({
   onLoad: function (options) {
     var that = this
     wx.request({
-      url: 'http://localhost:12494/Product/history',
+      url: 'http://localhost:12494/Product/History',
       method: 'GET',
       header: {
         //'content-type': 'application/json',
@@ -97,7 +97,7 @@ Page({
   delete: function (e) {
     var that = this
     wx.request({
-      url: `http://localhost:12494/Product/history?productId=${e.currentTarget.dataset.productid}`,
+      url: `http://localhost:12494/Product/History?productId=${e.currentTarget.dataset.productid}`,
       method: 'DELETE',
       header: {
         //'content-type': 'application/json',
@@ -126,7 +126,7 @@ Page({
     　　wx.showNavigationBarLoading() //在标题栏中显示加载
 
     　　wx.request({
-        url: 'http://localhost:12494/Product/history',
+        url: 'http://localhost:12494/Product/History',
       data: {},
       method: 'GET',
       header: {
