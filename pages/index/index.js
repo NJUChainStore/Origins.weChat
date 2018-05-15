@@ -137,7 +137,7 @@ Page({
       data: JSON.stringify({
         username:that.data.username, 
         password:that.data.password,
-        role:'producer'}),
+        role:'Producer'}),
       method: 'POST',
       success: function (res) {
         console.log('token ' + res.data.token)

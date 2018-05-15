@@ -98,7 +98,7 @@ Page({
   submit: function (){
     var that = this
     wx.request({
-      url: `https://URL/Product/QRcode?productId=${that.data.productId}&location=${that.data.location}`,
+      url: `http://localhost:12494/Product/QRcode?productId=${that.data.productId}&location=${that.data.location}`,
       method: 'GET',
       header: {
         //'content-type': 'application/json',

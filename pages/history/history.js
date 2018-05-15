@@ -2,7 +2,7 @@ const app = getApp()
 Page({
   data: {
     ProductShortList: [
-      {
+      /*{
         productId: "光明牛奶",
         producedDate: "2018.5.13 12:21:39"
       },
@@ -13,10 +13,13 @@ Page({
       {
         productId: "进口牛奶",
         producedDate: "2018.5.13 08:55:07"
-      }
+      }*/
     ]
   },
-
+  object: {
+    productId: '',
+    producedDate: ''
+  },
   onLoad: function (options) {
   },
 
@@ -39,12 +42,14 @@ Page({
             title: '当前没有历史查询内容',
           })
         }
+        console.log(that.data.productShortList)
       },
       fail: function (e) {
         console.log(e)
       },
       complete: function () {
         //再刷新一遍更新数据
+        that.onLoad()
       }
     })
     

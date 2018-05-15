@@ -19,11 +19,11 @@ Page({
 
   submit: function (e) {
     var that = this
+    console.log(app.globalData.token)
     wx.request({
       url: 'http://localhost:12494/Product',
       data: JSON.stringify({
         productId: that.data.productId, 
-        operator: that.data.operator, 
         productDetails: that.data.productDetails}),
       method: 'POST',
       header: {

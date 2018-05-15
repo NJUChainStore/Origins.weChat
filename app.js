@@ -38,7 +38,7 @@ App({
     username: 123,
     password: 123,
     isLogin: false,
-    isProducer: true,
+    isProducer: false,
     token: ''
   }
 })
