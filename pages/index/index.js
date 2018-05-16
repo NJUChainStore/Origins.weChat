@@ -118,7 +118,8 @@ Page({
 
         wx.showToast({
           title: '登录成功',
-          icon: 'sucess'
+          icon: 'sucess',
+          duration: 2000
         })
 
         //调用scanQR界面onShow强制初始化
@@ -135,22 +136,12 @@ Page({
         console.log(e)
       },
       complete: function () {
-        wx.switchTab({
+        /*wx.switchTab({
           url: '../profile/profile',
-        })
+        })*/
       }
     })
-    /*
-    if (app.globalData.password == e.detail.value) {
-      wx.showToast({
-        title: '登录成功！',
-      })
-    }*/
     app.globalData.isLogin = true
-    
-    wx.switchTab({
-      url: '../profile/profile',
-    })
   },
   signUp: function(e) {
     var that = this
@@ -169,9 +160,11 @@ Page({
       success: function (res) {
         console.log('token ' + res.data.token)
         app.globalData.token = res.data.token
+        
         wx.showToast({
           title: '注册成功',
-          icon: 'sucess'
+          icon: 'sucess',
+          duration: 2000
         })
       },
       fail: function (e) {
@@ -182,9 +175,6 @@ Page({
           url: '../profile/profile',
         })
       }
-    })
-    wx.switchTab({
-      url: '../profile/profile',
     })
   }
 })

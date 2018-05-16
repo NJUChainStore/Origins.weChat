@@ -95,6 +95,7 @@ Page({
   },
 
   delete: function (e) {
+    console.log(e)
     var that = this
     wx.request({
       url: `http://localhost:12494/Product/History?productId=${e.currentTarget.dataset.productid}`,

@@ -36,8 +36,9 @@ Page({
   logout: function (e){
     this.setData({
       loginDisplay: 'block',
-      userDisplay: 'none'
+      userDisplay: 'none',
     })
+    app.globalData.isLogin = false
     var that = this
     that.onLoad()
   },
