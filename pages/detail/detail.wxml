@@ -4,12 +4,13 @@
   </view>
   <form class="form">
     <view class='inputView' wx:for="{{ProductInfoQueryViewModel.productDetails}}" wx:for-index="i" wx:for-item="item" wx:key='key'>
-      <input class='inputText' placeholder='productId' value='{{productId}}'></input>
+      <input class='inputText' placeholder='productId' value='{{productId}}' disabled='disabled'></input>
       <view class='loginLab'>ProductId</view>
-      <input class='inputText' placeholder='operator' value='{{item.operator}}'></input>              <view class='loginLab'>Operator</view>
-      <input class='inputText' placeholder='date' value='{{correctDate}}' data-date='{{item.date}}' bindfocus='correctDate'></input>
+      <input class='inputText' placeholder='operator' value='{{item.operator}}' disabled='disabled'></input>              
+      <view class='loginLab'>Operator</view>
+      <input class='inputText' placeholder='date' value='{{correctDate}}' data-date='{{item.date}}' bindtap='correctDate' disabled='disabled'></input>
       <view class='loginLab'>Date</view>
-      <textarea class='inputText1' placeholder='detail' value='{{item.detail}}'></textarea>
+      <textarea class='inputText1' placeholder='detail' value='{{item.detail}}' disabled='disabled'></textarea>
       <view class='loginLab'>Detail</view>
     </view>
   </form>
