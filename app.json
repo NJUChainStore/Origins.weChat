@@ -3,7 +3,6 @@
     "pages/scanQR/scanQR",
     "pages/history/history",
     "pages/profile/profile",
-    "pages/login/login",
     "pages/index/index",
     "pages/add/add",
     "pages/detail/detail"
